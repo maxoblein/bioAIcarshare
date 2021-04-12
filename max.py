@@ -93,6 +93,8 @@ def distribute_passengers(numberPassengers,nodeList):
     passengerNodes = np.random.choice(indices,numberPassengers)
 
     for i in passengerNodes:
+        #passenger tag added to the node dictionary#
+        ##NOTE THERE MAY BE A BETTER WAY TO SPECIFY THIS##
         nodeList[i][-1]['passenger'] = True
 
     return nodeList
