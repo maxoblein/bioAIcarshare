@@ -45,10 +45,13 @@ def export_data():
 
     nodes_to_csv(G, 'uknetworknodes.csv')
 
-    adj_mat = nx.linalg.graphmatrix.adjacency_matrix(G,weight='length')
-    print(adj_mat)
+    # adj_mat = nx.linalg.graphmatrix.adjacency_matrix(G,weight='length')
+    # print(adj_mat)
+    #
+    # save_npz('adjacency_matrix',adj_mat)
 
-    save_npz('adjacency_matrix',adj_mat)
+    adj_matrix = nx.to_pandas_edgelist(G)
+    adj_matrix.to_csv('pandasedgelist.csv')
 
 
 if __name__ == '__main__':
