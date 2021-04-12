@@ -4,6 +4,8 @@ import pandas as pd
 import networkx as nx
 from scipy.sparse import save_npz, load_npz
 from math import sin, cos, sqrt, atan2, radians
+from james import *
+
 
 def nodes_from_csv(path):
     df = pd.read_csv(path, index_col=0)
