@@ -1,2 +1,3 @@
 ukstreetnetwork
 cache/*
+__pycache__/*
