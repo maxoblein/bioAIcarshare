@@ -36,7 +36,7 @@ def distance_to_goal_node(currentNode,goalNode,nodeList):
     currentNodeDict = nodeList[currentNode][-1]
     goalNodeDict = nodeList[goalNode][-1]
 
-    
+
     xCurrent = currentNodeDict['x']
     yCurrent = currentNodeDict['y']
     xGoal = goalNodeDict['x']
@@ -87,6 +87,17 @@ def update_ant_position(currentNode,goalNode,nodeList,distMatrix):
 
     return nextNode
 
+def distribute_passengers(numberPassengers,nodeList):
+    indices = np.arange(len(nodeList))
+    print(indices)
+    passengerNodes = np.random.choice(indices,numberPassengers)
+
+    for i in passengerNodes:
+        nodeList[i][-1]['passenger'] = True
+
+    return nodeList
+
+
 
 
 
@@ -96,6 +107,11 @@ def update_ant_position(currentNode,goalNode,nodeList,distMatrix):
 if __name__ == '__main__':
     G, nodeList, distMatrix = initialise()
 
-    print(distance_to_goal_node(2,256,nodeList))
+    #number of ants per iteration
+    N = 500
 
-    print(update_ant_position(0,256,nodeList,distMatrix))
+    ##CHOOSE INITIAL NODE AND GOAL NODE##
+    passengerNodeList = distribute_passengers(20,nodeList)
+
+    print(passengerNodeList)
+    #
