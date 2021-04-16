@@ -29,7 +29,7 @@ def initialise():
     distMatrix = nx.linalg.graphmatrix.adjacency_matrix(G,weight='length')
     distMatrix = distMatrix.toarray()
 
-    return G, nodeList, distMatrix
+    return G, list(G.nodes), distMatrix
 
 def distance_to_goal_node(currentNode,goalNode,nodeList):
 

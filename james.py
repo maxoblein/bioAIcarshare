@@ -2,7 +2,7 @@
 from max import *
 
 
-def distribute_pheremone(routes, nodeList)
+def distribute_pheremone(routes, nodeList):
     #routes is a list of lists. List of nodes on route
 
     #pheremone is a nxn matrix number of ants to use edge row x column
@@ -20,7 +20,7 @@ def distribute_pheremone(routes, nodeList)
 
     return pheremone
 
-def route_scoring(route_length, num_pickups)
+def route_scoring(route_length, num_pickups):
     #####MIGHT NEED TO CALCULATE ROUTES####
     ###Need to decide what 'scaling_term' we want trial and error###
     ###constant 'a' to decide how influnetial pick_ups are
@@ -35,7 +35,7 @@ def route_scoring(route_length, num_pickups)
 
 
 
-def choose_node(current_node,potential_next_nodes,goalNode,nodeList, pheremone, distMatrix,strength_pheremone,strength_goal,strength_next)
+def choose_node(current_node,potential_next_nodes,goalNode,nodeList, pheremone, distMatrix,strength_pheremone,strength_goal,strength_next):
     #current_node --- 'int'
     #potential_next_nodes ---'list nodes'
     #pheremone --- Matrix equivalent to edges
