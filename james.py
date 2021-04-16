@@ -62,6 +62,49 @@ def choose_node(current_node,potential_next_nodes,goalNode,nodeList, pheremone, 
     return next_node
 
 
+def synthetic_network(n):
+
+    # create n nodes
+    nodes = list(range(1, n))
+    
+    edges = []
+
+    #n random xy coordinates in unit square
+    xy = np.random.random((n,2))
+
+    #triangulation over the network
+    tri = Delaunay(xy)
+
+    #add three edges of the triangles
+    for i in tri.simplices:
+        edges.append([i[0],i[1]])
+        edges.append([i[0],i[2]])
+        edges.append([i[1],i[2]])
+
+    #initialise network
+    G=nx.Graph()
+    #add nodes
+    G.add_nodes_from(nodes)
+    #add edges
+    ####THINK THIS REMOVES DUPLICATE EDGES####
+    G.add_edges_from(edges)
+
+    #add xy coordinates to nodes
+    for j in G:
+        G.nodes[j]['pos'] = (xy[j][0], xy[j][1])
+
+
+
+    ####To plot the network
+    #nx.draw(G, pos=nx.get_node_attributes(G, 'pos'))
+
+    ####Find [x,y] of node i 
+    #(G.nodes[i]['pos'])
+
+    ####Find edges
+    #G.edges
+    return G
+
 
 
 
