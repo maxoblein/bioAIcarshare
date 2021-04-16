@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import networkx as nx
+import math
 from scipy.sparse import save_npz, load_npz
 from math import sin, cos, sqrt, atan2, radians
 from james import *
@@ -107,7 +108,9 @@ def distribute_passengers(numberPassengers,nodeList):
     return nodeList
 
 
-
+def euclidean_distance(point1, point2):
+    distance = math.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
+    return distance
 
 
 
