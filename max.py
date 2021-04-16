@@ -69,7 +69,7 @@ def get_uniform_dist(potentialNextNodes):
 
     return distribution
 
-def update_ant_position(currentNode,goalNode,nodeList,distMatrix):
+def update_ant_position(currentNode,goalNode,nodeList,distMatrix, pheremone, strength_pheremone,strength_goal,strength_next):
     # Get row of distance matrix corresponding to current node
     distVector = distMatrix[currentNode,:]
 
@@ -80,7 +80,7 @@ def update_ant_position(currentNode,goalNode,nodeList,distMatrix):
     #form probability vector for potential next nodes
 
     ##NEED JAMES PROBABILITY FUNCTION##
-    distribuion = get_uniform_dist(potentialNextNodes)
+    distribuion = choose_node(currentNode,potentialNextNodes,goalNode,nodeList, pheremone, distMatrix,strength_pheremone,strength_goal,strength_next)
 
     #choose next node from potential next nodes according to probability distribuion
     nextNode = np.random.choice(potentialNextNodes)
