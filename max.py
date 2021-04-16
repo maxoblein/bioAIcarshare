@@ -69,7 +69,14 @@ def get_uniform_dist(potentialNextNodes):
 
     return distribution
 
-def update_ant_position(currentNode,goalNode,nodeList,distMatrix, pheremone, strength_pheremone,strength_goal,strength_next):
+def update_ant_position(currentNode,goalNode,nodeList,distMatrix, pheremone):
+
+    #set up parameters
+    strength_pheremone = 1
+    strength_goal = 1
+    strength_next = 1
+
+
     # Get row of distance matrix corresponding to current node
     distVector = distMatrix[currentNode,:]
 
