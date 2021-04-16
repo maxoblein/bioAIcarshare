@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import networkx as nx
+import math
 from scipy.sparse import save_npz, load_npz
 from math import sin, cos, sqrt, atan2, radians
 from james import *
@@ -29,7 +30,7 @@ def initialise():
     distMatrix = nx.linalg.graphmatrix.adjacency_matrix(G,weight='length')
     distMatrix = distMatrix.toarray()
 
-    return G, nodeList, distMatrix
+    return G, list(G.nodes), distMatrix
 
 def distance_to_goal_node(currentNode,goalNode,nodeList):
 
@@ -69,7 +70,14 @@ def get_uniform_dist(potentialNextNodes):
 
     return distribution
 
-def update_ant_position(currentNode,goalNode,nodeList,distMatrix):
+def update_ant_position(currentNode,goalNode,nodeList,distMatrix, pheremone):
+
+    #set up parameters
+    strength_pheremone = 1
+    strength_goal = 1
+    strength_next = 1
+
+
     # Get row of distance matrix corresponding to current node
     distVector = distMatrix[currentNode,:]
 
@@ -80,7 +88,7 @@ def update_ant_position(currentNode,goalNode,nodeList,distMatrix):
     #form probability vector for potential next nodes
 
     ##NEED JAMES PROBABILITY FUNCTION##
-    distribuion = get_uniform_dist(potentialNextNodes)
+    distribuion = choose_node(currentNode,potentialNextNodes,goalNode,nodeList, pheremone, distMatrix,strength_pheremone,strength_goal,strength_next)
 
     #choose next node from potential next nodes according to probability distribuion
     nextNode = np.random.choice(potentialNextNodes)
@@ -100,7 +108,9 @@ def distribute_passengers(numberPassengers,nodeList):
     return nodeList
 
 
-
+def euclidean_distance(point1, point2):
+    distance = math.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
+    return distance
 
 
 
