@@ -12,3 +12,7 @@ G, nodeList, distMatrix = initialise()
 initialNode = np.random.choice(nodeList,1)
 
 print(initialNode)
+
+G = synthetic_network(10)
+
+print(G.edges(data=True))

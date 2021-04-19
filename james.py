@@ -1,5 +1,6 @@
 #Script for James' functions
 from max import *
+from scipy.spatial import Delaunay
 
 
 def distribute_pheremone(routes, nodeList):
@@ -61,7 +62,7 @@ def synthetic_network(n):
 
     # create n nodes
     nodes = list(range(1, n))
-    
+
     edges = []
 
     #n random xy coordinates in unit square
@@ -93,7 +94,7 @@ def synthetic_network(n):
     ####To plot the network
     #nx.draw(G, pos=nx.get_node_attributes(G, 'pos'))
 
-    ####Find [x,y] of node i 
+    ####Find [x,y] of node i
     #(G.nodes[i]['pos'])
 
     ####Find edges
